@@ -9,7 +9,7 @@ app.use(httpLogger);
 app.use(express.json());
 
 
-app.use("/api/url", urlRoutes);
+app.use("/api/urls", urlRoutes);
 
 app.use(errorHandler);
 
