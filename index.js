@@ -1,7 +1,7 @@
 import "dotenv/config"
-import app from "./app";
-import redisClient from "./src/config/redis";
-import logger from "./src/utils/logger";
+import app from "./app.js";
+import redisClient from "./src/config/redis.js";
+import logger from "./src/utils/logger.js";
 
 
 process.on("unhandledRejection", (err) => {
