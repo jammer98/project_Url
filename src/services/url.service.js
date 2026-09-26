@@ -8,8 +8,12 @@ import { AppError } from '../utils/appError.js';
 async function CreateShorturl(originalUrl) {
     const shortCode = nanoid(6);
 
-    await redisClient.set(shortCode, originalUrl);
-
+    try {
+        await redisClient.set(shortCode, originalUrl);
+    } catch (err) {
+        logger.error({ err, shortCode }, "Failed to cache original URL in Redis");
+    }
+   
     const { rows } = await pool.query("INSERT INTO urls (short_code, original_url) VALUES ($1, $2) RETURNING *", [shortCode, originalUrl]);
     logger.info("Short URL created successfully:", { shortCode, originalUrl });
 
