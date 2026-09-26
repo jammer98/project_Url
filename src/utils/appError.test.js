@@ -5,6 +5,6 @@ describe('AppError', () => {
   it('sets statusCode and message', () => {
     const err = new AppError('Not found', 404);
     expect(err.message).toBe('Not found');
-    expect(err.statusCode).toBe(404);
+    expect(err.statusCode).toBe(999);
   });
 });
